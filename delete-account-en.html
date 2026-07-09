@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Deletion Request - MenuGreen</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 720px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+      color: white;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .header h1 { font-size: 28px; margin-bottom: 8px; font-weight: 700; }
+    .header p { font-size: 16px; opacity: 0.95; }
+    .content { padding: 32px; }
+    .section { margin-bottom: 32px; }
+    .section h2 {
+      font-size: 20px;
+      color: #2e7d32;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 22px;
+      background: #4caf50;
+      border-radius: 2px;
+    }
+    .steps { list-style: none; counter-reset: step-counter; }
+    .steps li {
+      counter-increment: step-counter;
+      padding: 14px 16px 14px 56px;
+      background: #f5f5f5;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      background: #4caf50;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .data-list { list-style: none; padding: 0; }
+    .data-list li {
+      padding: 10px 0 10px 32px;
+      position: relative;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .data-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 22px;
+      height: 22px;
+      background: #ffebee;
+      color: #c62828;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .data-list li.kept::before {
+      content: "○";
+      background: #e3f2fd;
+      color: #1565c0;
+    }
+    .data-list li strong { color: #2e7d32; }
+    .data-list li.kept strong { color: #1565c0; }
+    .warning-box {
+      background: #fff8e1;
+      border-left: 4px solid #ffa000;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    .warning-box strong { color: #e65100; }
+    .contact-box {
+      background: #f1f8e9;
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 24px 0;
+    }
+    .contact-box a {
+      display: inline-block;
+      background: #4caf50;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 12px;
+      transition: background 0.2s;
+    }
+    .contact-box a:hover { background: #388e3c; }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      background: #e0e0e0;
+      z-index: 0;
+    }
+    .timeline-step { position: relative; z-index: 1; text-align: center; flex: 1; }
+    .timeline-dot {
+      width: 24px;
+      height: 24px;
+      background: #4caf50;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      border: 4px solid #e8f5e9;
+    }
+    .timeline-label { font-size: 12px; color: #666; }
+    .footer {
+      background: #f5f5f5;
+      padding: 20px 32px;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+    }
+    .lang-switch {
+      text-align: right;
+      padding: 12px 20px 0;
+    }
+    .lang-switch a { color: #4caf50; text-decoration: none; font-size: 14px; }
+    .lang-switch a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .header { padding: 28px 20px; }
+      .header h1 { font-size: 22px; }
+      .content { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lang-switch">
+      <a href="delete-account.html">Tiếng Việt</a>
+    </div>
+
+    <div class="header">
+      <h1>🍽️ Account Deletion Request - MenuGreen</h1>
+      <p>We respect your privacy</p>
+    </div>
+
+    <div class="content">
+      <div class="section">
+        <h2>Introduction</h2>
+        <p>
+          Hello! Thank you for using <strong>MenuGreen</strong> — a nutrition
+          app that helps you track calories, plan meals, and reach your
+          health goals. If you want to delete your account and data, please
+          follow the instructions below.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>How to Request Account Deletion</h2>
+        <ol class="steps">
+          <li>Open the <strong>MenuGreen</strong> app on your Android device.</li>
+          <li>Sign in to the account you want to delete.</li>
+          <li>Go to <strong>Settings → Account → Delete Account</strong>.</li>
+          <li>Optionally provide a reason and tap <strong>"Submit Deletion Request"</strong>.</li>
+          <li>Or email us directly with the subject <em>"MenuGreen Account Deletion Request"</em>.</li>
+        </ol>
+      </div>
+
+      <div class="contact-box">
+        <strong>📧 Email your deletion request to:</strong>
+        <a href="mailto:support@menugreen.app?subject=MenuGreen%20Account%20Deletion%20Request&body=Hello%20MenuGreen%20Team%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20account.%0A%0ARegistered%20email%3A%20%0AReason%20(optional)%3A%20%0A%0AThank%20you%21">support@menugreen.app</a>
+      </div>
+
+      <div class="section">
+        <h2>Data That Will Be Permanently Deleted</h2>
+        <ul class="data-list">
+          <li><strong>Account information:</strong> display name, email, password (encrypted), avatar</li>
+          <li><strong>Health information:</strong> weight, height, age, gender, nutrition goals</li>
+          <li><strong>Meal data:</strong> meal history, menus, saved recipes</li>
+          <li><strong>Favorites:</strong> saved foods, recipes, meal plans</li>
+          <li><strong>Progress & stats:</strong> calorie charts, macros, login streaks</li>
+          <li><strong>Notifications:</strong> push notification history and FCM token</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>Data Retained (for legal/operational reasons)</h2>
+        <ul class="data-list">
+          <li class="kept"><strong>Security logs:</strong> kept for 90 days for fraud prevention, then auto-deleted</li>
+          <li class="kept"><strong>Anonymized payment data:</strong> if any transaction occurred, retained per tax regulations</li>
+        </ul>
+      </div>
+
+      <div class="warning-box">
+        <strong>⚠️ Important:</strong>
+        This action is <strong>irreversible</strong>. Once your account is deleted,
+        all data will be permanently removed and cannot be recovered.
+        If you only want to take a break, consider logging out instead of deleting.
+      </div>
+
+      <div class="section">
+        <h2>Processing Timeline</h2>
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Day 0<br><small>Request submitted</small></div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Day 1–3<br><small>Verification & processing</small></div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Day 7<br><small>Deletion complete</small></div>
+          </div>
+        </div>
+        <p style="text-align:center;color:#666;font-size:14px;">
+          Requests are processed within <strong>7 business days</strong>.
+          You will receive a confirmation email once deletion is complete.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Contact Support</h2>
+        <p>If you have any questions about account deletion or personal data, please contact us:</p>
+        <p style="margin-top:12px;">
+          📧 <strong>Email:</strong> support@menugreen.app<br>
+          🌐 <strong>Website:</strong> https://menugreen.app<br>
+          🏢 <strong>Developer:</strong> MenuGreen Team
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2026 MenuGreen · This page complies with our
+      <a href="privacy-policy.html" style="color:#4caf50;">Privacy Policy</a>
+      and Google Play requirements.
+    </div>
+  </div>
+</body>
+</html>
